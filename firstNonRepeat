@@ -1,0 +1,37 @@
+char firstNotRepeatingCharacter(String s) {
+    Map<Character, Integer> mp = new HashMap<Character, Integer>();
+    Map<Character, Integer> charOrder = new HashMap<Character, Integer>();
+    char min = '_';
+    for(int i = 0; i < s.length(); i++)
+    {
+        if(mp.containsKey(s.charAt(i)))
+        {
+            mp.put(s.charAt(i), mp.get(s.charAt(i))+1);
+        }
+        else
+        {
+            charOrder.put(s.charAt(i), i);
+            mp.put(s.charAt(i), 1);
+        }
+    }
+    
+    for(char c : mp.keySet())
+    {
+        if(mp.get(c) == 1)
+        {
+            if (min != '_')
+            {
+                if(charOrder.get(c) < charOrder.get(min))
+                {
+                    min = c;
+                }                    
+            }
+            else
+            {
+                min = c;
+            }
+        }
+    }
+    
+    return min;
+}
