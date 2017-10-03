@@ -1,0 +1,51 @@
+import java.lang.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Arrays;
+
+public class testing {
+	
+        public static void main (String args[])
+        {
+    System.out.println(Arrays.toString(addOne(new int[]{})));
+    System.out.println(Arrays.toString(addOne(new int[]{1})));
+    System.out.println(Arrays.toString(addOne(new int[]{9})));
+    System.out.println(Arrays.toString(addOne(new int[]{3, 9, 9})));
+    System.out.println(Arrays.toString(addOne(new int[]{3, 9, 9, 9})));
+    System.out.println(Arrays.toString(addOne(new int[]{9, 9, 9, 9})));
+    System.out.println(Arrays.toString(addOne(new int[]{9, 9, 9, 8})));
+        }
+        
+	public static int[] addOne (int[] arr)
+        {
+            Boolean flag = false; 
+            
+            for(int i = arr.length-1; i >= 0; i--)
+            {
+                if(i==0 & arr[i]==9)
+                {
+                    flag = true;
+                }
+                if(arr[i] != 9)
+                {
+                    arr[i] = arr[i]+1;
+                    break;
+                }
+                else
+                {
+                    arr[i] = 0;
+                }
+            }
+            
+            if(flag==true)
+            {
+                int[] arr2 = new int[arr.length+1];
+                arr2[0] = 1;
+                return arr2;
+            }
+            else
+            {
+                return arr;
+            }
+        }
+    }    
